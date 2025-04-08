@@ -10,8 +10,8 @@ class ListsController < ApplicationController
     list=List.new(list_params)
     # 3. データをデータベースに保存するためのsaveメソッドを実行する
     list.save
-    # 4. トップ画面へリダイレクトする
-    redirect_to '/top'
+    # 4. 詳細画面へリダイレクトする
+    redirect_to list_path(list.id)
   end
 
   # 三章 一覧画面を表示しよう
@@ -27,6 +27,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
   end
 
+  # 第五章 編集機能を作ろう
   def edit
   end
 
