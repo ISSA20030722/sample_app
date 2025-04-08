@@ -14,10 +14,17 @@ class ListsController < ApplicationController
     redirect_to '/top'
   end
 
+  # 三章 一覧画面を表示しよう
   def index
+    # @付きの変数はインスタンス変数
+    # .allメソッドはlistsテーブルに保存されている全てのデータを取得できる
+    @lists = List.all
   end
 
   def show
+    # レコードを1件だけ取得するのでインスタンス変数は単数形の@list
+    # params[:id]はURLに埋め込まれたidの値を取得する、結果としてURLの:idに応じたレコードを一見検索し、@listでviewに渡す
+    @list = List.find(params[:id])
   end
 
   def edit

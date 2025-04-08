@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # 第二章投稿機能を作ろう
   resources :lists 
+  # get 'lists/:id' => 'lists#show'　いる？
   # get "homes/top" => "homes#top"と同じ意味だがコントローラーメイトアクション名が同じであるため省略されている
   # homesコントローラーのtopアクションを呼び出す
   get '/top' => 'homes#top'
