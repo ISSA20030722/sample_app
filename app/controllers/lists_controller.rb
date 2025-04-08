@@ -29,8 +29,16 @@ class ListsController < ApplicationController
 
   # 第五章 編集機能を作ろう
   def edit
+    # listsテーブルを表すListモデルからIDがparams[:id]に一致するレコードを検索する。
+    @list = List.find(params[:id])
   end
 
+  def update
+    # @を使わないとローカル変数となる
+    list = List.find(params[:id])
+    list.update(list_params)
+    redirect_to list_path(list.id)
+  end
   private
   # privateメソッドより下はURLとしてアクセスすることができず、外部から呼び出すことができない、逆にこれより上はpublicメソッドと呼ばれる
   # ストロングパラメータ
