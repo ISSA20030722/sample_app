@@ -39,8 +39,18 @@ class ListsController < ApplicationController
     list.update(list_params)
     redirect_to list_path(list.id)
   end
+
+  def destroy
+    # データ(レコード)を1件取得する。@を使わないのはdestroyアクション内の変数を用いてviewを表示する機会がないため
+    list = List.find(params[:id])
+    # データ(レコード)を削除する
+    list.destroy
+    redirect_to '/lists'
+  end
+
   private
   # privateメソッドより下はURLとしてアクセスすることができず、外部から呼び出すことができない、逆にこれより上はpublicメソッドと呼ばれる
+ 
   # ストロングパラメータ
   def list_params
     params.require(:list).permit(:title, :body, :image)

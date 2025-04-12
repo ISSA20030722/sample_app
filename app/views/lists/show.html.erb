@@ -3,10 +3,17 @@
 
 <h2>本文</h2>
 <p><%= @list.body %></p>
+
 <h2>画像</h2>
 <% if @list.image.attached? %>
   <%= image_tag @list.image, size: "200x200" %>
 <% else %>
   <%= image_tag "no_image.jpg", size: "200x200" %>
 <% end %>
-<%= link_to '編集', edit_list_path(@list.id) %>
+
+<%= link_to "編集", edit_list_path(@list.id) %>
+<%# 削除と書かれたリンクを押すと、削除できるようになる
+ 普通リンクはgetメソッドを送信するが、method: :deleteによってDELETEメソッドのHTTPリクエストが送信される
+そのリクエストがroutes.rbに設定されたdestroy_listルートにマッチする。結果lists#destroyアクションが呼び出される。%>
+
+<%= link_to "削除", list_path(@list.id), method: :delete, "data-confirm" => "本当に削除しますか?" %>
