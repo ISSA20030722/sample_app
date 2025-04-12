@@ -5,4 +5,8 @@
   <span>
   <%= link_to list.title, list_path(list.id) %>
   </span>
+  # imgタグを生成するimage_tagメソッド
+  #オプションとしてサイズを変更することができるので今回は200*200
+  <p>画像</p>
+  <%= image_tag list.image, size: "200x200" %>
 <% end %>

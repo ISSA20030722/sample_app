@@ -43,7 +43,6 @@ class ListsController < ApplicationController
   # privateメソッドより下はURLとしてアクセスすることができず、外部から呼び出すことができない、逆にこれより上はpublicメソッドと呼ばれる
   # ストロングパラメータ
   def list_params
-
     params.require(:list).permit(:title, :body, :image)
     #title,image,bodyの3つのカラムを許可する
   end
