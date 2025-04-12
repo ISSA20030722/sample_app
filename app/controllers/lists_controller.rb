@@ -7,11 +7,14 @@ class ListsController < ApplicationController
 # 投稿を保存する機能を追加する
   def create
     # 1&2. データを受取、新規登録するためのインスタンスを作成する
-    list=List.new(list_params)
+    @list=List.new(list_params)
     # 3. データをデータベースに保存するためのsaveメソッドを実行する
-    list.save
+    if @list.save
     # 4. 詳細画面へリダイレクトする
     redirect_to list_path(list.id)
+    else
+      render :new
+    end
   end
 
   # 三章 一覧画面を表示しよう

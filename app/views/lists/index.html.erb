@@ -6,16 +6,10 @@
   <%= link_to list.title, list_path(list.id) %>
   </span>
 
-  <%#imgタグを生成するimage_tagメソッド
-  オプションとしてサイズを変更することができるので今回は200*200
-  %>
+  <%# imgタグを生成するimage_tagメソッド
+  オプションとしてサイズを変更することができるので今回は200*200 %>
   <p>画像</p>
   
-  <%# attached?は画像が存在していればtrueを返すメソッド,存在しなければfalseを返す%>
-  <% if list.image.attached? %>
-    <%= image_tag list.image, size: "200x200" %>
-  <% else %>
-    <%= image_tag "no_image.jpg", size: "200x200" %>
-  <% end %>
+  <%= image_tag list.image,size: "200x200" %>
 
 <% end %>

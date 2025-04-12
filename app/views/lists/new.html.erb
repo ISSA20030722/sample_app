@@ -1,4 +1,15 @@
 <h1>新規投稿</h1>
+<%# バリデーションによるエラーの内容を確認できるようにする %>
+<% if @list.errors.any? %>
+  <%= @list.errors.count %>件のエラーが発生しました
+  <ul>
+    <%# errorsはモデルにバリデーションを掛けた時に発生したエラーの内容を確認できるメソッド、
+    any?と組み合わせることでエラーが発生しているかどうかを判定することができる %>
+    <% @list.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= form_with model: @list, url:'/lists' do |f| %>
 
